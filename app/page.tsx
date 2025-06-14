@@ -1,103 +1,126 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Fuel, Car, ShoppingBag } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import QuickInfoBar from "@/components/quick-info-bar"
+import FuelPriceCard from "@/components/fuel-price-card"
+import ServiceCard from "@/components/service-card"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 px-4 md:px-6 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">FuelMaster Petrol Station</h1>
+              <p className="text-xl mb-6">Quality fuel and exceptional service for your journey</p>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="bg-white text-blue-800 hover:bg-gray-100">
+                  <Link href="/fuel-prices">View Fuel Prices</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Link href="/contact">Find Us</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <img
+                src="/images/petrol-station-hero.jpg"
+                alt="FuelMaster Petrol Station"
+                className="rounded-lg shadow-lg object-cover h-[400px] w-full"
+                width={600}
+                height={400}
+              />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Quick Info Bar */}
+      <QuickInfoBar />
+
+      {/* Fuel Prices Preview */}
+      <section className="py-16 px-4 md:px-6 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-2">Today's Fuel Prices</h2>
+            <p className="text-gray-600">Updated daily at 6:00 AM</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <FuelPriceCard type="Regular" price="3.45" icon="regular" color="bg-green-100 text-green-700" />
+            <FuelPriceCard type="Premium" price="3.89" icon="premium" color="bg-blue-100 text-blue-700" />
+            <FuelPriceCard type="Diesel" price="3.65" icon="diesel" color="bg-yellow-100 text-yellow-700" />
+            <FuelPriceCard type="E85" price="2.99" icon="e85" color="bg-purple-100 text-purple-700" />
+          </div>
+          <div className="text-center mt-8">
+            <Button asChild>
+              <Link href="/fuel-prices">View All Fuel Options</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Preview */}
+      <section className="py-16 px-4 md:px-6 lg:px-8 bg-gray-50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-2">Our Services</h2>
+            <p className="text-gray-600">More than just a petrol station</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ServiceCard
+              title="Car Wash"
+              description="Automatic and hand wash options available to keep your vehicle clean."
+              icon={<Car className="h-8 w-8" />}
+            />
+            <ServiceCard
+              title="Convenience Store"
+              description="Grab snacks, drinks, and essentials 24/7 at our well-stocked store."
+              icon={<ShoppingBag className="h-8 w-8" />}
+            />
+            <ServiceCard
+              title="EV Charging"
+              description="Fast charging stations for electric vehicles."
+              icon={<Fuel className="h-8 w-8" />}
+            />
+          </div>
+          <div className="text-center mt-8">
+            <Button asChild>
+              <Link href="/services">View All Services</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 px-4 md:px-6 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="bg-blue-600 text-white rounded-lg p-8 md:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-4">Join Our Membership Program</h2>
+                <p className="text-lg mb-6">
+                  Get exclusive discounts on fuel, free car washes, and special promotions when you join our membership
+                  program.
+                </p>
+                <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+                  <Link href="/services">Learn More</Link>
+                </Button>
+              </div>
+              <div className="hidden md:block">
+                <img
+                  src="/images/membership-card.jpg"
+                  alt="FuelMaster Membership Card"
+                  className="rounded-lg shadow-lg object-cover h-[300px] w-full"
+                  width={400}
+                  height={300}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
